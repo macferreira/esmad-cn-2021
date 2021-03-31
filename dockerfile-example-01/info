@@ -5,4 +5,4 @@ docker build -t myapacheimage .
 docker container ls
 
 # Run the container (set port host:container)
-docker run -p 80:80
+docker run -p 80:80 myapacheimage:latest
