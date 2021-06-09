@@ -24,8 +24,8 @@ const fleet = [
 
 exports.handler = (event, context, callback) => {
     if (!event.requestContext.authorizer) {
-      errorResponse('Authorization not configured', context.awsRequestId, callback);
-      return;
+        errorResponse('Authorization not configured', context.awsRequestId, callback);
+        return;
     }
 
     const rideId = toUrlString(randomBytes(16));
@@ -106,14 +106,14 @@ function toUrlString(buffer) {
 }
 
 function errorResponse(errorMessage, awsRequestId, callback) {
-  callback(null, {
-    statusCode: 500,
-    body: JSON.stringify({
-      Error: errorMessage,
-      Reference: awsRequestId,
-    }),
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-    },
-  });
+    callback(null, {
+        statusCode: 500,
+        body: JSON.stringify({
+            Error: errorMessage,
+            Reference: awsRequestId,
+        }),
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        },
+    });
 }
